@@ -7,7 +7,7 @@ public class SwapBits {
   @EpiTest(testDataFile = "swap_bits.tsv")
   public static long swapBits(long x, int i, int j) {
     if (((x >>> i) & 1) != ((x >>> j) & 1)) {
-      long bitMask = (1 << i) | (1 << j);
+      long bitMask = (1L << i) | (1L << j);
       x ^= bitMask;
     }
 
