@@ -18,6 +18,19 @@ public class ClosestIntSameWeight {
     throw new IllegalArgumentException("Value contains all 0's or all 1's");
   }
 
+  public static long closestIntSameBitCountConstant(long x) {
+    long mask = 0;
+    if ((x & 1) == 1) {
+      // get the rightmost 0
+      mask = (x + 1) | ((x + 1) >>> 1);
+    } else {
+      // get the rightmost 1
+      mask = (~x + 1) | ((~x + 1) >>> 1);
+    }
+
+    return x ^ mask;
+  }
+
   public static void main(String[] args) {
     System.exit(
         GenericTest
