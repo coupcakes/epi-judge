@@ -7,12 +7,12 @@ public class Parity {
   @EpiTest(testDataFile = "parity.tsv")
   public static short parity(long x) {
     // XOR group of bits with each other
-    x >>>= 32;
-    x >>>= 16;
-    x >>>= 8;
-    x >>>= 4;
-    x >>>= 2;
-    x >>>= 1;
+    x ^= x >>> 32;
+    x ^= x >>> 16;
+    x ^= x >>> 8;
+    x ^= x >>> 4;
+    x ^= x >>> 2;
+    x ^= x >>> 1;
     return (short) (x & 1);
   }
 

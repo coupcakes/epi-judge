@@ -2702,7 +2702,7 @@ problem_mapping = {
                 "total": 34
             },
             "Java: CopyPostingList.java": {
-                "passed": 0,
+                "passed": 32,
                 "total": 34
             },
             "Python: copy_posting_list.py": {

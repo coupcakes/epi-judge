@@ -5,7 +5,6 @@ import epi.test_framework.GenericTest;
 
 public class CountBits {
   @EpiTest(testDataFile = "count_bits.tsv")
-
   public static short countBits(int x) {
     short numberOfBits = 0;
     while (x != 0) {
