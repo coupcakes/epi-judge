@@ -1,4 +1,5 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
 import epi.test_framework.TestFailure;
@@ -7,12 +8,27 @@ import epi.test_framework.TimedExecutor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 public class EvenOddArray {
 
   public static void evenOdd(List<Integer> A) {
     // TODO - you fill in here.
+    int frontPtr = 0;
+    int endPtr = A.size() - 1;
+    while (frontPtr < endPtr) {
+      if (A.get(frontPtr) % 2 != 0) {
+        Collections.swap(A, frontPtr, endPtr--);
+        // int temp = A.get(endPtr);
+        // A.set(endPtr, A.get(frontPtr));
+        // endPtr--;
+        // A.set(frontPtr, temp);
+      } else {
+        frontPtr++;
+      }
+    }
     return;
   }
+
   @EpiTest(testDataFile = "even_odd_array.tsv")
   public static void evenOddWrapper(TimedExecutor executor, List<Integer> A)
       throws Exception {
@@ -41,7 +57,8 @@ public class EvenOddArray {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "EvenOddArray.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }
