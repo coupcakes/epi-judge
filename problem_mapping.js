@@ -218,7 +218,7 @@ problem_mapping = {
                 "total": 1000
             },
             "Java: IntAsArrayMultiply.java": {
-                "passed": 0,
+                "passed": 1000,
                 "total": 1000
             },
             "Python: int_as_array_multiply.py": {
