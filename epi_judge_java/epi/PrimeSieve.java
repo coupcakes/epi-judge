@@ -11,21 +11,20 @@ public class PrimeSieve {
   @EpiTest(testDataFile = "prime_sieve.tsv")
   // Given n, return all primes up to and including n.
   public static List<Integer> generatePrimes(int n) {
-    return generatePrimesV3(n);
-    // List<Integer> res = new ArrayList<Integer>();
-    // for (int i = 2; i <= n; i++) {
-    // boolean isPrime = true;
-    // for (int j = 2; j <= Math.sqrt(i); j++) {
-    // if ((i % j) == 0) {
-    // isPrime = false;
-    // break;
-    // }
-    // }
-    // if (isPrime) {
-    // res.add(i);
-    // }
-    // }
-    // return res;
+    List<Integer> res = new ArrayList<Integer>();
+    for (int i = 2; i <= n; i++) {
+      boolean isPrime = true;
+      for (int j = 2; j <= Math.sqrt(i); j++) {
+        if ((i % j) == 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      if (isPrime) {
+        res.add(i);
+      }
+    }
+    return res;
   }
 
   private static List<Integer> generatePrimesV2(int n) {
