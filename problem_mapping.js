@@ -316,7 +316,7 @@ problem_mapping = {
                 "total": 101
             },
             "Java: ApplyPermutation.java": {
-                "passed": 0,
+                "passed": 101,
                 "total": 101
             },
             "Python: apply_permutation.py": {
