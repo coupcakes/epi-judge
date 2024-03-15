@@ -372,7 +372,7 @@ problem_mapping = {
                 "total": 6
             },
             "Java: RandomPermutation.java": {
-                "passed": 0,
+                "passed": 6,
                 "total": 6
             },
             "Python: random_permutation.py": {
