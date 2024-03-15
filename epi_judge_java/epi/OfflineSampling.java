@@ -1,4 +1,5 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
 import epi.test_framework.RandomSequenceChecker;
@@ -7,13 +8,19 @@ import epi.test_framework.TimedExecutor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
 public class OfflineSampling {
   public static void randomSampling(int k, List<Integer> A) {
-    // TODO - you fill in here.
+    Random rand = new Random();
+    for (int i = 0; i < k; i++) {
+      Collections.swap(A, i, i + rand.nextInt(A.size() - i));
+    }
     return;
   }
+
   private static boolean randomSamplingRunner(TimedExecutor executor, int k,
-                                              List<Integer> A)
+      List<Integer> A)
       throws Exception {
     List<List<Integer>> results = new ArrayList<>();
 
@@ -24,12 +31,10 @@ public class OfflineSampling {
       }
     });
 
-    int totalPossibleOutcomes =
-        RandomSequenceChecker.binomialCoefficient(A.size(), k);
+    int totalPossibleOutcomes = RandomSequenceChecker.binomialCoefficient(A.size(), k);
     Collections.sort(A);
     List<List<Integer>> combinations = new ArrayList<>();
-    for (int i = 0; i < RandomSequenceChecker.binomialCoefficient(A.size(), k);
-         ++i) {
+    for (int i = 0; i < RandomSequenceChecker.binomialCoefficient(A.size(), k); ++i) {
       combinations.add(
           RandomSequenceChecker.computeCombinationIdx(A, A.size(), k, i));
     }
@@ -44,7 +49,7 @@ public class OfflineSampling {
 
   @EpiTest(testDataFile = "offline_sampling.tsv")
   public static void randomSamplingWrapper(TimedExecutor executor, int k,
-                                           List<Integer> A) throws Exception {
+      List<Integer> A) throws Exception {
     RandomSequenceChecker.runFuncWithRetries(
         () -> randomSamplingRunner(executor, k, A));
   }
@@ -53,7 +58,8 @@ public class OfflineSampling {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "OfflineSampling.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }
