@@ -1,4 +1,5 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
 import epi.test_framework.RandomSequenceChecker;
@@ -6,17 +7,32 @@ import epi.test_framework.TestFailure;
 import epi.test_framework.TimedExecutor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 public class NonuniformRandomNumber {
 
-  public static int
-  nonuniformRandomNumberGeneration(List<Integer> values,
-                                   List<Double> probabilities) {
-    // TODO - you fill in here.
-    return 0;
+  public static int nonuniformRandomNumberGeneration(List<Integer> values,
+      List<Double> probabilities) {
+    List<Double> probs = new ArrayList<Double>();
+    probs.add(0.0);
+    for (double p : probabilities) {
+      probs.add(p + probs.get(probs.size() - 1));
+    }
+    Random rand = new Random();
+    final double randProb = rand.nextDouble();
+    int idx = Collections.binarySearch(probs, randProb);
+    if (idx < 0) {
+      int newIdx = (Math.abs(idx) - 1) - 1;
+      return values.get(newIdx);
+    } else {
+      return values.get(idx);
+    }
   }
+
   private static boolean nonuniformRandomNumberGenerationRunner(
       TimedExecutor executor, List<Integer> values, List<Double> probabilities)
       throws Exception {
@@ -52,16 +68,16 @@ public class NonuniformRandomNumber {
       TimedExecutor executor, List<Integer> values, List<Double> probabilities)
       throws Exception {
     RandomSequenceChecker.runFuncWithRetries(
-        ()
-            -> nonuniformRandomNumberGenerationRunner(executor, values,
-                                                      probabilities));
+        () -> nonuniformRandomNumberGenerationRunner(executor, values,
+            probabilities));
   }
 
   public static void main(String[] args) {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "NonuniformRandomNumber.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }

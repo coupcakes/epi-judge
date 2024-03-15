@@ -400,7 +400,7 @@ problem_mapping = {
                 "total": 10
             },
             "Java: NonuniformRandomNumber.java": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             },
             "Python: nonuniform_random_number.py": {
