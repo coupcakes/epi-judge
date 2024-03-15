@@ -386,7 +386,7 @@ problem_mapping = {
                 "total": 9
             },
             "Java: RandomSubset.java": {
-                "passed": 0,
+                "passed": 9,
                 "total": 9
             },
             "Python: random_subset.py": {
