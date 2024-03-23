@@ -15,7 +15,7 @@ public class StringIntegerInterconversion {
 
     StringBuilder s = new StringBuilder();
     do {
-      s.append((char)('0' + Math.abs(x % 10)));
+      s.append((char) ('0' + Math.abs(x % 10)));
       x /= 10;
     } while (x != 0);
 
@@ -45,7 +45,8 @@ public class StringIntegerInterconversion {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "StringIntegerInterconversion.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }
