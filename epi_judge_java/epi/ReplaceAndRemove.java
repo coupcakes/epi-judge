@@ -6,6 +6,7 @@ import epi.test_framework.TimedExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ReplaceAndRemove {
 
@@ -32,6 +33,7 @@ public class ReplaceAndRemove {
       }
       currIdx--;
     }
+    Map
 
     return finalSize;
   }
