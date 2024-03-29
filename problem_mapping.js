@@ -584,7 +584,7 @@ problem_mapping = {
                 "total": 3999
             },
             "Java: RomanToInteger.java": {
-                "passed": 0,
+                "passed": 3999,
                 "total": 3999
             },
             "Python: roman_to_integer.py": {
