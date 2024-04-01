@@ -626,7 +626,7 @@ problem_mapping = {
                 "total": 200
             },
             "Java: RunLengthCompression.java": {
-                "passed": 0,
+                "passed": 200,
                 "total": 200
             },
             "Python: run_length_compression.py": {
