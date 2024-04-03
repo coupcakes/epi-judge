@@ -664,15 +664,15 @@ problem_mapping = {
                 "total": 505
             },
             "Java: DeleteFromList.java": {
-                "passed": 0,
+                "passed": 457,
                 "total": 457
             },
             "Java: InsertInList.java": {
-                "passed": 0,
+                "passed": 504,
                 "total": 504
             },
             "Java: SearchInList.java": {
-                "passed": 0,
+                "passed": 505,
                 "total": 505
             },
             "Python: delete_from_list.py": {
