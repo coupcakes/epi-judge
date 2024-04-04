@@ -14,7 +14,23 @@ public class IsListCyclic {
       slow = slow.next;
       fast = fast.next.next;
       if (slow == fast) {
-        return slow;
+        int cycleLen = 0;
+        do {
+          fast = fast.next;
+          cycleLen++;
+        } while (slow != fast);
+
+        ListNode<Integer> advancedIter = head;
+        while (cycleLen-- > 0) {
+          advancedIter = advancedIter.next;
+        }
+
+        ListNode<Integer> iter = head;
+        while (iter != advancedIter) {
+          advancedIter = advancedIter.next;
+          iter = iter.next;
+        }
+        return iter;
       }
     }
     return null;
