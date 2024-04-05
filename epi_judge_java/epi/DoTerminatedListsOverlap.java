@@ -1,19 +1,49 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
 import epi.test_framework.TestFailure;
 import epi.test_framework.TimedExecutor;
+
 public class DoTerminatedListsOverlap {
 
-  public static ListNode<Integer>
-  overlappingNoCycleLists(ListNode<Integer> l0, ListNode<Integer> l1) {
-    // TODO - you fill in here.
-    return null;
+  public static ListNode<Integer> overlappingNoCycleLists(ListNode<Integer> l0, ListNode<Integer> l1) {
+    int l0Len = getLength(l0);
+    int l1Len = getLength(l1);
+    if (l0Len > l1Len) {
+      l0 = advanceListByK(l0, l0Len - l1Len);
+    } else {
+      l1 = advanceListByK(l1, l1Len - l0Len);
+    }
+
+    while (l0 != null && l1 != null && l0 != l1) {
+      l0 = l0.next;
+      l1 = l1.next;
+    }
+
+    return l0;
   }
+
+  private static ListNode<Integer> advanceListByK(ListNode<Integer> L, int k) {
+    while (k-- > 0) {
+      L = L.next;
+    }
+
+    return L;
+  }
+
+  private static int getLength(ListNode<Integer> L) {
+    int len = 0;
+    while (L != null) {
+      L = L.next;
+      len++;
+    }
+    return len;
+  }
+
   @EpiTest(testDataFile = "do_terminated_lists_overlap.tsv")
-  public static void
-  overlappingNoCycleListsWrapper(TimedExecutor executor, ListNode<Integer> l0,
-                                 ListNode<Integer> l1, ListNode<Integer> common)
+  public static void overlappingNoCycleListsWrapper(TimedExecutor executor, ListNode<Integer> l0,
+      ListNode<Integer> l1, ListNode<Integer> common)
       throws Exception {
     if (common != null) {
       if (l0 != null) {
@@ -39,8 +69,7 @@ public class DoTerminatedListsOverlap {
 
     final ListNode<Integer> finalL0 = l0;
     final ListNode<Integer> finalL1 = l1;
-    ListNode<Integer> result =
-        executor.run(() -> overlappingNoCycleLists(finalL0, finalL1));
+    ListNode<Integer> result = executor.run(() -> overlappingNoCycleLists(finalL0, finalL1));
 
     if (result != common) {
       throw new TestFailure("Invalid result");
@@ -51,7 +80,8 @@ public class DoTerminatedListsOverlap {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "DoTerminatedListsOverlap.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }

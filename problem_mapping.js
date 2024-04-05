@@ -736,7 +736,7 @@ problem_mapping = {
                 "total": 106
             },
             "Java: DoTerminatedListsOverlap.java": {
-                "passed": 0,
+                "passed": 106,
                 "total": 106
             },
             "Python: do_terminated_lists_overlap.py": {
@@ -750,7 +750,7 @@ problem_mapping = {
                 "total": 120
             },
             "Java: DoListsOverlap.java": {
-                "passed": 0,
+                "passed": 120,
                 "total": 120
             },
             "Python: do_lists_overlap.py": {
