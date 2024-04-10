@@ -1,20 +1,43 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
+
 public class ListCyclicRightShift {
   @EpiTest(testDataFile = "list_cyclic_right_shift.tsv")
 
   public static ListNode<Integer> cyclicallyRightShiftList(ListNode<Integer> L,
-                                                           int k) {
-    // TODO - you fill in here.
-    return null;
+      int k) {
+    if (L == null) {
+      return L;
+    }
+    ListNode<Integer> tail = L;
+    int len = 1;
+    while (tail.next != null) {
+      tail = tail.next;
+      len++;
+    }
+    k %= len;
+    if (k == 0) {
+      return L;
+    }
+    tail.next = L;
+    int stepsToNewHead = len - k;
+    ListNode<Integer> newTail = tail;
+    while (stepsToNewHead-- > 0) {
+      newTail = newTail.next;
+    }
+    ListNode<Integer> newHead = newTail.next;
+    newTail.next = null;
+    return newHead;
   }
 
   public static void main(String[] args) {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "ListCyclicRightShift.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }
