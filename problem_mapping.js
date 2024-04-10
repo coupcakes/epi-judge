@@ -792,7 +792,7 @@ problem_mapping = {
                 "total": 203
             },
             "Java: RemoveDuplicatesFromSortedList.java": {
-                "passed": 0,
+                "passed": 203,
                 "total": 203
             },
             "Python: remove_duplicates_from_sorted_list.py": {
