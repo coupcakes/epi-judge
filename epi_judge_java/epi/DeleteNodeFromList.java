@@ -1,18 +1,22 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
 import epi.test_framework.TimedExecutor;
+
 public class DeleteNodeFromList {
 
   // Assumes nodeToDelete is not tail.
   public static void deletionFromList(ListNode<Integer> nodeToDelete) {
-    // TODO - you fill in here.
+    nodeToDelete.data = nodeToDelete.next.data;
+    nodeToDelete.next = nodeToDelete.next.next;
     return;
   }
+
   @EpiTest(testDataFile = "delete_node_from_list.tsv")
   public static ListNode<Integer> deleteListWrapper(TimedExecutor executor,
-                                                    ListNode<Integer> head,
-                                                    int nodeToDeleteIdx)
+      ListNode<Integer> head,
+      int nodeToDeleteIdx)
       throws Exception {
     ListNode<Integer> nodeToDelete = head;
     if (nodeToDelete == null)
@@ -33,7 +37,8 @@ public class DeleteNodeFromList {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "DeleteNodeFromList.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }

@@ -764,7 +764,7 @@ problem_mapping = {
                 "total": 512
             },
             "Java: DeleteNodeFromList.java": {
-                "passed": 0,
+                "passed": 512,
                 "total": 512
             },
             "Python: delete_node_from_list.py": {
