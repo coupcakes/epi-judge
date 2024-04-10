@@ -862,7 +862,7 @@ problem_mapping = {
                 "total": 2002
             },
             "Java: IntAsListAdd.java": {
-                "passed": 0,
+                "passed": 2002,
                 "total": 2002
             },
             "Python: int_as_list_add.py": {
