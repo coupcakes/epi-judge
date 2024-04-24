@@ -1,19 +1,34 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
+
 public class IsTreeSymmetric {
   @EpiTest(testDataFile = "is_tree_symmetric.tsv")
 
   public static boolean isSymmetric(BinaryTreeNode<Integer> tree) {
-    // TODO - you fill in here.
-    return true;
+    return tree == null || checkSymmetric(tree.left, tree.right);
+  }
+
+  private static boolean checkSymmetric(BinaryTreeNode<Integer> subtree0, BinaryTreeNode<Integer> subtree1) {
+    if (subtree0 == null && subtree1 == null) {
+      return true;
+    }
+
+    if (subtree0 != null && subtree1 != null) {
+      return subtree0.data == subtree1.data && checkSymmetric(subtree0.left, subtree1.right)
+          && checkSymmetric(subtree0.right, subtree1.left);
+    }
+
+    return false;
   }
 
   public static void main(String[] args) {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "IsTreeSymmetric.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }
