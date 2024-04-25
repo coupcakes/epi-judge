@@ -1076,7 +1076,7 @@ problem_mapping = {
                 "total": 7690
             },
             "Java: PathSum.java": {
-                "passed": 0,
+                "passed": 7690,
                 "total": 7690
             },
             "Python: path_sum.py": {
