@@ -1118,7 +1118,7 @@ problem_mapping = {
                 "total": 948
             },
             "Java: SuccessorInTree.java": {
-                "passed": 0,
+                "passed": 948,
                 "total": 948
             },
             "Python: successor_in_tree.py": {
