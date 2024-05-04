@@ -1202,7 +1202,7 @@ problem_mapping = {
                 "total": 10
             },
             "Java: TreeRightSibling.java": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             },
             "Python: tree_right_sibling.py": {
