@@ -1232,7 +1232,7 @@ problem_mapping = {
                 "total": 203
             },
             "Java: SortIncreasingDecreasingArray.java": {
-                "passed": 0,
+                "passed": 203,
                 "total": 203
             },
             "Python: sort_increasing_decreasing_array.py": {
