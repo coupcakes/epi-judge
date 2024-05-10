@@ -1318,7 +1318,7 @@ problem_mapping = {
                 "total": 501
             },
             "Java: SearchEntryEqualToIndex.java": {
-                "passed": 0,
+                "passed": 501,
                 "total": 501
             },
             "Python: search_entry_equal_to_index.py": {
