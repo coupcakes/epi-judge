@@ -1388,7 +1388,7 @@ problem_mapping = {
                 "total": 501
             },
             "Java: SearchForMinMaxInArray.java": {
-                "passed": 0,
+                "passed": 501,
                 "total": 501
             },
             "Python: search_for_min_max_in_array.py": {
