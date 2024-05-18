@@ -1374,7 +1374,7 @@ problem_mapping = {
                 "total": 194
             },
             "Java: SearchRowColSortedMatrix.java": {
-                "passed": 0,
+                "passed": 194,
                 "total": 194
             },
             "Python: search_row_col_sorted_matrix.py": {
