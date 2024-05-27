@@ -18,7 +18,6 @@ public class IsAnonymousLetterConstructible {
       if (letterFreq.containsKey(c)) {
         letterFreq.put(c, letterFreq.get(c) - 1);
         if (letterFreq.remove(c, 0L)) {
-          letterFreq.remove(c);
           if (letterFreq.isEmpty()) {
             break;
           }
