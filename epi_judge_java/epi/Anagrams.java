@@ -18,6 +18,7 @@ public class Anagrams {
   @EpiTest(testDataFile = "anagrams.tsv")
 
   public static List<List<String>> findAnagrams(List<String> dictionary) {
+    // test
     Map<String, List<String>> map = new HashMap<String, List<String>>();
     for (String s : dictionary) {
       String sortedStr = Stream.of(s.split("")).sorted().collect(Collectors.joining());
