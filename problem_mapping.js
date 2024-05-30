@@ -1544,7 +1544,7 @@ problem_mapping = {
                 "total": 629
             },
             "Java: SmallestSubarrayCoveringAllValues.java": {
-                "passed": 0,
+                "passed": 629,
                 "total": 629
             },
             "Python: smallest_subarray_covering_all_values.py": {
