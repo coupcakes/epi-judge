@@ -1558,7 +1558,7 @@ problem_mapping = {
                 "total": 987
             },
             "Java: LongestSubarrayWithDistinctValues.java": {
-                "passed": 0,
+                "passed": 987,
                 "total": 987
             },
             "Python: longest_subarray_with_distinct_values.py": {
