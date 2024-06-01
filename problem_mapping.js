@@ -1586,7 +1586,7 @@ problem_mapping = {
                 "total": 171
             },
             "Java: StringDecompositionsIntoDictionaryWords.java": {
-                "passed": 0,
+                "passed": 171,
                 "total": 171
             },
             "Python: string_decompositions_into_dictionary_words.py": {
