@@ -1714,7 +1714,7 @@ problem_mapping = {
                 "total": 191
             },
             "Java: IntervalsUnion.java": {
-                "passed": 0,
+                "passed": 191,
                 "total": 191
             },
             "Python: intervals_union.py": {

@@ -1,4 +1,5 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.EpiUserType;
 import epi.test_framework.GenericTest;
@@ -7,6 +8,7 @@ import epi.test_framework.TimedExecutor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 public class IntervalsUnion {
 
   public static class Interval {
@@ -20,11 +22,40 @@ public class IntervalsUnion {
   }
 
   public static List<Interval> unionOfIntervals(List<Interval> intervals) {
-    // TODO - you fill in here.
-    return Collections.emptyList();
+    if (intervals.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    intervals.sort((a, b) -> {
+      if (Integer.compare(a.left.val, b.left.val) != 0) {
+        return a.left.val - b.left.val;
+      }
+
+      if (a.left.isClosed && !b.left.isClosed) {
+        return -1;
+      }
+
+      return !a.left.isClosed && b.left.isClosed ? 1 : 0;
+    });
+
+    List<Interval> res = new ArrayList<Interval>();
+    for (Interval i : intervals) {
+      if (!res.isEmpty() && ((i.left.val < res.get(res.size() - 1).right.val)
+          || (i.left.val == res.get(res.size() - 1).right.val
+              && (i.left.isClosed || res.get(res.size() - 1).right.isClosed)))) {
+        if ((i.right.val > res.get(res.size() - 1).right.val)
+            || (i.right.val == res.get(res.size() - 1).right.val && i.right.isClosed)) {
+          res.get(res.size() - 1).right = i.right;
+        }
+      } else {
+        res.add(i);
+      }
+    }
+
+    return res;
   }
-  @EpiUserType(
-      ctorParams = {int.class, boolean.class, int.class, boolean.class})
+
+  @EpiUserType(ctorParams = { int.class, boolean.class, int.class, boolean.class })
   public static class FlatInterval {
     int leftVal;
     boolean leftIsClosed;
@@ -32,7 +63,7 @@ public class IntervalsUnion {
     boolean rightIsClosed;
 
     public FlatInterval(int leftVal, boolean leftIsClosed, int rightVal,
-                        boolean rightIsClosed) {
+        boolean rightIsClosed) {
       this.leftVal = leftVal;
       this.leftIsClosed = leftIsClosed;
       this.rightVal = rightVal;
@@ -66,7 +97,7 @@ public class IntervalsUnion {
         return false;
       }
 
-      FlatInterval that = (FlatInterval)o;
+      FlatInterval that = (FlatInterval) o;
 
       if (leftVal != that.leftVal) {
         return false;
@@ -97,8 +128,7 @@ public class IntervalsUnion {
   }
 
   @EpiTest(testDataFile = "intervals_union.tsv")
-  public static List<FlatInterval>
-  unionIntervalWrapper(TimedExecutor executor, List<FlatInterval> intervals)
+  public static List<FlatInterval> unionIntervalWrapper(TimedExecutor executor, List<FlatInterval> intervals)
       throws Exception {
     List<Interval> casted = new ArrayList<>(intervals.size());
     for (FlatInterval in : intervals) {
@@ -118,7 +148,8 @@ public class IntervalsUnion {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "IntervalsUnion.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }
