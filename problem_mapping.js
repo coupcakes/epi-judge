@@ -1672,7 +1672,7 @@ problem_mapping = {
                 "total": 308
             },
             "Java: SmallestNonconstructibleValue.java": {
-                "passed": 0,
+                "passed": 308,
                 "total": 308
             },
             "Python: smallest_nonconstructible_value.py": {
