@@ -1700,7 +1700,7 @@ problem_mapping = {
                 "total": 103
             },
             "Java: IntervalAdd.java": {
-                "passed": 0,
+                "passed": 103,
                 "total": 103
             },
             "Python: interval_add.py": {
