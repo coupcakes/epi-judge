@@ -1,4 +1,5 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.EpiTestComparator;
 import epi.test_framework.EpiTestExpectedType;
@@ -8,9 +9,10 @@ import epi.test_framework.GenericTest;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiPredicate;
+
 public class RemoveDuplicates {
-  @EpiUserType(ctorParams = {String.class, String.class})
-  //@include
+  @EpiUserType(ctorParams = { String.class, String.class })
+  // @include
   public static class Name implements Comparable<Name> {
     String firstName;
     String lastName;
@@ -28,7 +30,7 @@ public class RemoveDuplicates {
       if (this == obj) {
         return true;
       }
-      Name name = (Name)obj;
+      Name name = (Name) obj;
       return firstName.equals(name.firstName) && lastName.equals(name.lastName);
     }
 
@@ -46,10 +48,19 @@ public class RemoveDuplicates {
       return lastName.compareTo(name.lastName);
     }
   }
+
   public static void eliminateDuplicate(List<Name> names) {
-    // TODO - you fill in here.
+    Collections.sort(names);
+    int writeIdx = 0;
+    for (int i = 1; i < names.size(); i++) {
+      if (!names.get(i).firstName.equals(names.get(writeIdx).firstName)) {
+        names.set(++writeIdx, names.get(i));
+      }
+    }
+    names.subList(++writeIdx, names.size()).clear();
     return;
   }
+
   @EpiTest(testDataFile = "remove_duplicates.tsv")
   public static List<Name> eliminateDuplicateWrapper(List<Name> names) {
     eliminateDuplicate(names);
@@ -74,13 +85,15 @@ public class RemoveDuplicates {
     return true;
   }
 
-  @EpiTestExpectedType public static List<String> expectedType;
+  @EpiTestExpectedType
+  public static List<String> expectedType;
 
   public static void main(String[] args) {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "RemoveDuplicates.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }

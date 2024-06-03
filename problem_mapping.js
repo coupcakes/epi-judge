@@ -1658,7 +1658,7 @@ problem_mapping = {
                 "total": 202
             },
             "Java: RemoveDuplicates.java": {
-                "passed": 0,
+                "passed": 202,
                 "total": 202
             },
             "Python: remove_duplicates.py": {
