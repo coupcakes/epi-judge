@@ -1756,7 +1756,7 @@ problem_mapping = {
                 "total": 209
             },
             "Java: SortList.java": {
-                "passed": 0,
+                "passed": 209,
                 "total": 209
             },
             "Python: sort_list.py": {
