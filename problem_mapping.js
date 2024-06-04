@@ -1728,7 +1728,7 @@ problem_mapping = {
                 "total": 33
             },
             "Java: GroupEqualEntries.java": {
-                "passed": 0,
+                "passed": 33,
                 "total": 33
             },
             "Python: group_equal_entries.py": {
