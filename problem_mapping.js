@@ -1742,7 +1742,7 @@ problem_mapping = {
                 "total": 105
             },
             "Java: IsArrayDominated.java": {
-                "passed": 0,
+                "passed": 105,
                 "total": 105
             },
             "Python: is_array_dominated.py": {
