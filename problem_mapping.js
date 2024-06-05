@@ -1786,7 +1786,7 @@ problem_mapping = {
                 "total": 955
             },
             "Java: SearchInBst.java": {
-                "passed": 0,
+                "passed": 955,
                 "total": 955
             },
             "Python: search_in_bst.py": {
