@@ -1870,7 +1870,7 @@ problem_mapping = {
                 "total": 51
             },
             "Java: MinimumDistance3SortedArrays.java": {
-                "passed": 0,
+                "passed": 51,
                 "total": 51
             },
             "Python: minimum_distance_3_sorted_arrays.py": {
