@@ -1956,7 +1956,7 @@ problem_mapping = {
                 "total": 10034
             },
             "Java: EuclideanGcd.java": {
-                "passed": 0,
+                "passed": 10034,
                 "total": 10034
             },
             "Python: euclidean_gcd.py": {
