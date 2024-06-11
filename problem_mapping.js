@@ -1940,7 +1940,7 @@ problem_mapping = {
                 "total": 201
             },
             "Java: AddingCredits.java": {
-                "passed": 0,
+                "passed": 201,
                 "total": 201
             },
             "Python: adding_credits.py": {
