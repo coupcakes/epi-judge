@@ -1,25 +1,41 @@
 package epi;
+
 import epi.test_framework.EpiTest;
 import epi.test_framework.GenericTest;
 import epi.test_framework.TestFailure;
 import epi.test_framework.TimedExecutor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+
 public class Hanoi {
 
   private static final int NUM_PEGS = 3;
 
   public static List<List<Integer>> computeTowerHanoi(int numRings) {
-    // TODO - you fill in here.
-    return Collections.emptyList();
+    List<List<Integer>> ret = new ArrayList<>();
+    towerOfHanoi(numRings, 0, 1, 2, ret);
+    return ret;
   }
+
+  private static void towerOfHanoi(int numRings, int from, int aux, int dest, List<List<Integer>> ret) {
+    if (numRings == 1) {
+      ret.add(Arrays.asList(from, dest));
+      return;
+    } else if (numRings > 1) {
+      towerOfHanoi(numRings - 1, from, dest, aux, ret);
+      ret.add(Arrays.asList(from, dest));
+      towerOfHanoi(numRings - 1, aux, from, dest, ret);
+    }
+  }
+
   @EpiTest(testDataFile = "hanoi.tsv")
   public static void computeTowerHanoiWrapper(TimedExecutor executor,
-                                              int numRings) throws Exception {
+      int numRings) throws Exception {
     List<Deque<Integer>> pegs = new ArrayList<>();
     for (int i = 0; i < NUM_PEGS; i++) {
       pegs.add(new LinkedList<>());
@@ -28,8 +44,7 @@ public class Hanoi {
       pegs.get(0).addFirst(i);
     }
 
-    List<List<Integer>> result =
-        executor.run(() -> computeTowerHanoi(numRings));
+    List<List<Integer>> result = executor.run(() -> computeTowerHanoi(numRings));
 
     for (List<Integer> operation : result) {
       int fromPeg = operation.get(0);
@@ -37,9 +52,9 @@ public class Hanoi {
       if (!pegs.get(toPeg).isEmpty() &&
           pegs.get(fromPeg).getFirst() >= pegs.get(toPeg).getFirst()) {
         throw new TestFailure("Illegal move from " +
-                              String.valueOf(pegs.get(fromPeg).getFirst()) +
-                              " to " +
-                              String.valueOf(pegs.get(toPeg).getFirst()));
+            String.valueOf(pegs.get(fromPeg).getFirst()) +
+            " to " +
+            String.valueOf(pegs.get(toPeg).getFirst()));
       }
       pegs.get(toPeg).addFirst(pegs.get(fromPeg).removeFirst());
     }
@@ -68,7 +83,8 @@ public class Hanoi {
     System.exit(
         GenericTest
             .runFromAnnotations(args, "Hanoi.java",
-                                new Object() {}.getClass().getEnclosingClass())
+                new Object() {
+                }.getClass().getEnclosingClass())
             .ordinal());
   }
 }
